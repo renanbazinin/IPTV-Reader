@@ -4,12 +4,12 @@
   align-items: center;    /* center children horizontally */
   text-align: center;     /* center text/content */
   min-height: 100vh;      /* allow scrolling if content exceeds viewport */
-  height: 100vh;          /* full viewport height */
-  width: 100%;            /* take full available width */
-  max-width: 100%;        /* allow for wider content */
-  margin: 0;              /* remove auto margins */
+  width: 100%;
+  max-width: 100%;
   padding: 1rem;
+  box-sizing: border-box;
 }
+
 .uploader, .filter-bar { margin-bottom: 1rem; display: flex; gap: .5rem; }
 .channel-list { display: grid; grid-template-columns: repeat(auto-fill, 120px); gap: .75rem; }
 .channel-item { 
@@ -61,7 +61,34 @@
 
 @media (max-width: 600px) {
   .app {
-    max-width: none;
     padding: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.8em;
+    margin-bottom: 0.5rem;
+  }
+  
+  .uploader, .filter-bar {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .channel-list {
+    grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+    gap: 0.5rem;
+  }
+  
+  .channel-item img {
+    width: 80px;
+    height: 50px;
+  }
+  
+  .channel-item span {
+    font-size: 0.75rem;
+  }
+  
+  .video-container {
+    margin-top: 0.5rem;
   }
 }
