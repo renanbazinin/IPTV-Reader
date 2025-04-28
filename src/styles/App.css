@@ -1,0 +1,67 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;    /* center children horizontally */
+  text-align: center;     /* center text/content */
+  min-height: 100vh;      /* allow scrolling if content exceeds viewport */
+  height: 100vh;          /* full viewport height */
+  width: 100%;            /* take full available width */
+  max-width: 100%;        /* allow for wider content */
+  margin: 0;              /* remove auto margins */
+  padding: 1rem;
+}
+.uploader, .filter-bar { margin-bottom: 1rem; display: flex; gap: .5rem; }
+.channel-list { display: grid; grid-template-columns: repeat(auto-fill, 120px); gap: .75rem; }
+.channel-item { 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  background: #2e2e2e; 
+  border: none; 
+  border-radius: 8px; 
+  padding: .5rem; 
+  cursor: pointer; 
+  transition: transform .2s ease, box-shadow .2s ease; 
+}
+.channel-item:hover { 
+  transform: translateY(-4px) scale(1.03); 
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); 
+}
+.channel-item img { 
+  width: 100px; 
+  height: 60px; 
+  object-fit: contain; 
+  border-radius: 4px; 
+}
+.channel-item span { 
+  margin-top: .5rem; 
+  font-size: .85rem; 
+  color: #f0f0f0; 
+  text-align: center; 
+  line-height: 1.2; 
+}
+
+.video-container {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container video {
+  max-width: 100%;
+  width: 100%;  /* ensure video takes full width of its container */
+  height: auto;
+  max-height: 70vh;  /* limit height to prevent oversized videos */
+  border-radius: 8px;
+  background: #000;
+  display: block;  /* remove any default inline spacing */
+}
+
+@media (max-width: 600px) {
+  .app {
+    max-width: none;
+    padding: 0.5rem;
+  }
+}

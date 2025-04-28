@@ -1,0 +1,66 @@
+.channel-slider-container {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateX(calc(100% - 48px)) translateY(-50%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+  /* slight exposed “tab” to catch hover */
+  padding-left: 48px; /* larger peek */
+}
+.channel-slider-container:hover {
+  transform: translateX(0) translateY(-50%);
+}
+
+.channel-slider {
+  background: rgba(0, 0, 0, 0.85);
+  padding: 1rem;
+  border-radius: 8px 0 0 8px;
+  max-height: 80vh;
+  overflow-y: auto;
+  width: 280px; /* a bit wider */
+}
+
+/* you can tweak the exposed tab area */
+.channel-slider-container::before {
+  content: '';
+  position: absolute;
+  left: -48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 80px;
+  background: #646cff;
+  border-radius: 4px 0 0 4px;
+}
+
+.toggle-btn {
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  background: #646cff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+.toggle-btn:hover {
+  background: #535bf2;
+}
+
+@media (max-width: 600px) {
+  .channel-slider-container {
+    transform: translateX(calc(100% - 60px)) translateY(-50%);
+    padding-left: 60px;
+  }
+  .channel-slider-container::before {
+    left: -60px;
+    width: 60px;
+    height: 100px;
+  }
+  .channel-slider {
+    width: 90vw;
+    max-width: 100vw;
+    border-radius: 0; /* flush on mobile */
+  }
+}

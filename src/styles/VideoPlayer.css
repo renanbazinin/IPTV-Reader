@@ -1,0 +1,22 @@
+.video-player {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw; /* Set width relative to viewport */
+  max-width: 1200px; /* Maximum width */
+  height: auto;
+  max-height: 70vh;
+  border-radius: 8px;
+  background: #000;
+  display: block;
+}
+
+.video-container {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: visible; /* Allow content to overflow for centering */
+}
