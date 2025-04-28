@@ -25,19 +25,43 @@ export default function App() {
     });
   }, [channels, filter]);
 
+  // Handle a direct stream by immediately playing it
+  const handleDirectStream = (stream) => {
+    setCurrent({
+      id: 'direct-stream',
+      title: stream.title,
+      url: stream.url
+    });
+    // Clear the channel list since we're just playing a direct stream
+    setChannels([]);
+  };
+
   return (
     <div className="app">
       <h1>IPTV Reader</h1>
-      <PlaylistUploader onLoad={setChannels}/>
-      <FilterBar groups={groups} filter={filter} onFilterChange={setFilter}/>
-      <div className="channel-slider-container">
-        <div className="channel-slider">
-          <ChannelList channels={filtered} onSelect={setCurrent}/>
+      <PlaylistUploader 
+        onLoad={setChannels} 
+        onDirectStream={handleDirectStream}
+      />
+      
+      {channels.length > 0 && (
+        <FilterBar groups={groups} filter={filter} onFilterChange={setFilter}/>
+      )}
+      
+      {channels.length > 0 && (
+        <div className="channel-slider-container">
+          <div className="channel-slider">
+            <ChannelList channels={filtered} onSelect={setCurrent}/>
+          </div>
         </div>
-      </div>
+      )}
+      
       {current && (
         <div className="video-container">
           <VideoPlayer url={current.url} />
+          {current.title && (
+            <div className="current-title">{current.title}</div>
+          )}
         </div>
       )}
     </div>

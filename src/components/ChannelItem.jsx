@@ -5,7 +5,13 @@ export default function ChannelItem({ channel, onSelect }) {
       onClick={() => onSelect(channel)}
       title={channel.title}
     >
-      <img src={channel.logo} alt={channel.title} />
+      {channel.logo ? (
+        <img src={channel.logo} alt={channel.title} />
+      ) : (
+        <div className="placeholder-logo">
+          <span>{channel.title.substring(0, 2).toUpperCase()}</span>
+        </div>
+      )}
       <span>{channel.title}</span>
     </button>
   );
